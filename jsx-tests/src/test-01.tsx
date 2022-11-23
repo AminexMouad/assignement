@@ -1,16 +1,30 @@
 /**
- * In the following React template, display an unordered list (UL) with list items (LI) within it. 
- * The content of each list item should contain two spans (SPAN), one with the name and the other with the age passed in to the DataList function. 
+ * In the following React template, display an unordered list (UL) with list items (LI) within it.
+ * The content of each list item should contain two spans (SPAN), one with the name and the other with the age passed in to the DataList function.
  * The span elements should be separated by a single space.
  */
 
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-function DataList(props) {
+function DataList({data}) {
+
   return (
-    <h2>code goes here</h2>
+    <ul>
+      {data?.map((item:User, index:number) => (
+        <li key={index}>
+          <span>{item.name}</span>{' '}
+          <span>{item.age}</span>
+          </li>
+      ))}
+    </ul>
   );
+}
+
+
+interface User {
+  name: string;
+  age: number;
 }
 
 const data = [

@@ -6,16 +6,30 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 
-class Counter extends React.Component {
+type MyState = {
+  count: number;
+}
+
+type MyProps = {}
+
+class Counter extends React.Component<MyProps,MyState> {
+
   constructor(props) {
     super(props);
+    this.state = { count: 0 };
+  }
+
+  incrementCount() {
+    this.setState((state)=>({
+      count: state.count + 1
+    }));
   }
 
   render() {
     return (
       <div id="mainArea">
-        <p>button count: <span>0</span></p>
-        <button id="mainButton">Increase</button>
+        <p>button count: <span>{this.state.count}</span></p>
+        <button id="mainButton" onClick={this.incrementCount.bind(this)}>Increase</button>
       </div>
     );
   }
