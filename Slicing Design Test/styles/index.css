@@ -1,0 +1,344 @@
+@font-face {
+  font-family: 'Proxima Nova Regular';
+  src: url('../fonts/ProximaNova-Reg.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Bold';
+  src: url('../fonts/ProximaNova-Bold.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Regular';
+  src: url('../fonts/ProximaNova-Reg.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Light';
+  src: url('../fonts/Proxima-Nova-Light.otf');
+}
+
+@font-face {
+  font-family: 'Proxima Nova Bolder';
+  src: url('../fonts/ProximaNova-Extrabold.otf');
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Proxima Nova Regular', sans-serif;
+}
+
+.topHeader {
+  background-color: #23123a;
+  height: 73px;
+}
+
+.navbar {
+  display: flex;
+  height: 61px;
+  border: 2px solid #edeff0;
+}
+
+.navbarItem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-right: 2px solid #edeff0;
+  flex: 1;
+}
+
+.navbarItem:last-child {
+  border-right: none;
+}
+.navbarItem a {
+  text-decoration: none;
+  font-family: 'Proxima Nova Bold';
+  font-size: 20px;
+  text-transform: capitalize;
+  color: #000000;
+}
+
+.navbarItem a span {
+  display: none;
+}
+
+.hero {
+  background-color: #23123a;
+  height: fit-content;
+  position: relative;
+  padding-top: 40px;
+  height: 548px;
+  background-image: url('../images/mobile_hero_vector.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100%;
+}
+
+.hero h1 {
+  padding: 0 40px;
+  font-size: 71px;
+  margin-top: 0;
+  font-family: 'Proxima Nova bolder';
+  color: #ffffff;
+  letter-spacing: -4px;
+  margin-top: 35px;
+}
+
+.important-info-container {
+  background-color: #f1f5f8;
+  padding: 20px;
+}
+
+.important-info-container h1 {
+  font-family: 'Proxima Nova bolder';
+  letter-spacing: -1px;
+  font-size: 24px;
+  color: #535353;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+section {
+  padding: 20px;
+}
+
+section h2 {
+  font-family: 'Proxima Nova Regular';
+  font-size: 22px;
+  color: #000000;
+  margin: 0;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.reviewContainer {
+  display: none;
+}
+
+.cardPreviewContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.cardPreviewContainer div h3 {
+  font-size: 20px;
+  color: #000000;
+  font-family: 'Proxima Nova Regular';
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+
+.cardPreviewContainer div span {
+  font-size: 20px;
+  text-transform: capitalize;
+  color: white;
+  background-color: #59d8d1;
+  border-radius: 20px;
+  padding: 10px 25px;
+  font-family: 'Proxima Nova bolder';
+  letter-spacing: -1px;
+}
+
+section ul {
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+section ul li {
+  font-family: 'Proxima Nova Regular';
+  font-size: 20px;
+  color: #000000;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+
+section button {
+  background-color: #fa6e3d;
+  border: none;
+  width: 100%;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Proxima Nova bolder';
+  color: #ffffff;
+  font-size: 20px;
+  text-transform: capitalize;
+  letter-spacing: -1px;
+}
+
+.btn-desktop {
+  display: none;
+}
+
+footer {
+  padding: 20px;
+  border-top: 2px solid #7f949c;
+}
+
+footer a {
+  text-decoration: none;
+  font-family: 'Proxima Nova Regular';
+  font-size: 20px;
+  color: #1194f6;
+  text-transform: capitalize;
+}
+
+.desktop-footer {
+  display: none;
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    background-color: #f1f5f8;
+  }
+
+  .navbarItem a span {
+    display: inline;
+  }
+
+  main {
+    width: 1335px;
+    margin: 0 auto;
+  }
+
+  .hero {
+    height: 712px;
+    background-image: url('../images/desktop_hero_vector.png');
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 100%;
+  }
+
+  .hero h1 {
+    margin-top: 40px;
+    font-size: 136px;
+  }
+
+  .hero .mobileImage {
+    display: none;
+  }
+
+  .important-info-container {
+    margin-top: 40px;
+    margin-bottom: 20pxz;
+    padding: 0 70px;
+  }
+
+  .important-info-container h1 {
+    font-size: 40px;
+    font-family: 'Proxima Nova bolder';
+    letter-spacing: -1px;
+    color: #373737ff;
+    margin-top: 70px;
+  }
+
+  section {
+    padding: 60px 70px;
+    background-color: #ffffff;
+    margin: 40px 70px;
+  }
+
+  section h2 {
+    font-size: 26px;
+    font-family: 'Proxima Nova Regular';
+    letter-spacing: -1px;
+    color: #373737ff;
+    margin-bottom: 30px;
+  }
+
+  .titleContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .reviewContainer {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .reviewContainer span {
+    font-size: 20px;
+    font-family: 'Proxima Nova Regular';
+    color: #000000ff;
+  }
+
+  section ul li {
+    font-size: 24px;
+    font-family: 'Proxima Nova Light';
+    color: #000000ff;
+    line-height: 30px;
+    margin-bottom: 10px;
+  }
+
+  section ul li span {
+    font-family: 'Proxima Nova Light';
+    color: #1194f6ff;
+  }
+
+  section ul {
+    flex: 1;
+  }
+
+  .btn-desktop {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .btn-mobile {
+    display: none;
+  }
+
+  .cardPreview {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+  }
+
+  .cardPreviewContainer {
+    width: 362px;
+    align-items: flex-start;
+  }
+
+  .cardInfos {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .cardInfos div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+  }
+
+  .cardInfos div h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-family: 'Proxima Nova Light';
+  }
+
+  .mobile-footer {
+    display: none;
+  }
+
+  .desktop-footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    border-top: 1px solid #7f949c;
+  }
+
+  .desktop-footer a {
+    font-size: 24px;
+    font-family: 'Proxima Nova Regular';
+    color: #1194f6ff;
+    text-transform: capitalize;
+  }
+}
