@@ -3,67 +3,95 @@
  * * The [textarea] becomes a user inputed property.
  * * The content that user inputs will preserve its whitespaces and linebreaks when printed under the [review_content] property
  * * It should not allow rendering of html tags to prevent a security vulnerability (keep the inner text however)
- * * If the user enters a link in the content (ex : https://wallethub.com) it should become an anchor element when printed in the page 
+ * * If the user enters a link in the content (ex : https://wallethub.com) it should become an anchor element when printed in the page
  */
-import { Component, NgModule  } from '@angular/core';
-import { RouterModule} from "@angular/router";
+import { Component, NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-    selector : 'ng-app',
-    template : `
-                <h2>User Review:</h2>
-                <textarea class="textfield" placeholder="Write your Review" [value]="review_input"></textarea>
-                <br/><br/>
-                <h3>Output:</h3>
-                <div class="output" [innerHTML]="review_content"></div>
-                `,
-    styles : [
-        `.textfield {
-            width: 600px;
-            height: 220px;
-            padding: 10px;
-            box-sizing: border-box;
-        }`,
-        `.output { 
-            max-width: 100%;
-            width: 600px;
-            border: solid 1px #f9f6f6;
-            padding: 5px;
-            background: #ecebeb; 
-        }`
-    ]
+  selector: 'ng-app',
+  template: `
+    <h2>User Review:</h2>
+    <textarea
+      class="textfield"
+      placeholder="Write your Review"
+      [value]="review_input"
+      (change)="onChange($event)"
+    ></textarea>
+    <br /><br />
+    <h3>Output:</h3>
+    <div class="output" [innerHTML]="review_content"></div>
+  `,
+  styles: [
+    `
+      .textfield {
+        width: 600px;
+        height: 220px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    `,
+    `
+      .output {
+        max-width: 100%;
+        width: 600px;
+        border: solid 1px #f9f6f6;
+        padding: 5px;
+        background: #ecebeb;
+        white-space: pre-wrap;
+      }
+    `,
+  ],
 })
 export class ReviewComponent {
-    // sample input
-    review_input = 
-`Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-Maecenas tincidunt vestibulum ligula, sed viverra erat tempus nec. 
+  // sample input
+  review_input = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Maecenas tincidunt vestibulum ligula, sed viverra erat tempus nec.
 
 Pellentesque blandit mauris congue elit eleifend, facilisis tristique dolor dictum:
           1) Nulla et tempus orci
           2) Integer semper porttitor faucibus
-          
-At https://wallethub.com <b>bolded text</b>`
 
-    review_content = ""
+At https://wallethub.com <b>bolded text</b>`;
 
-    ngOnInit() {
-        this.review_content = this.review_input;
-    }
+  review_content = '';
 
+  ngOnInit() {
+    this.review_content = this.cleanOutPut(this.review_input);
+  }
+
+  cleanOutPut(text) {
+    let textWithoutHtmlTags = text.replace(/<[^>]*>/g, '');
+
+    const linkRegex =
+      /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+    const link = textWithoutHtmlTags.match(linkRegex);
+    textWithoutHtmlTags = textWithoutHtmlTags.replace(
+      link[0],
+      `<a href="${link[0]}">${link[0]}</a>`
+    );
+
+    return textWithoutHtmlTags;
+  }
+
+  onChange(event) {
+    const text = event.target.value;
+
+    this.review_content = this.cleanOutPut(text);
+  }
 }
 
 @NgModule({
-    imports : [
-        CommonModule,
-        RouterModule.forChild([
-            {
-                path : "",
-                component : ReviewComponent
-            }
-        ])
-    ],
-    declarations : [ReviewComponent]
+  imports: [
+    CommonModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: ReviewComponent,
+      },
+    ]),
+  ],
+  declarations: [ReviewComponent],
 })
 export class ReviewModule {}
